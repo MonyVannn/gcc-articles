@@ -48,10 +48,10 @@ const Strong = ({ children, ...props }: any) => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-async function ArticlePage(props: any) {
+async function ArticlePage(props: any) { 
   const postContent = getPostContent((await props.params).slug);
   return (
-    <div className="lg:px-20 md:px-10 px-5 py-20 ">
+    <div className="lg:px-20 md:px-10 px-5 pb-20 pt-32 ">
       <div className="flex items-center justify-center">
         <div className="max-w-4xl">
           <div>

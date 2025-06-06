@@ -61,7 +61,7 @@ const PostPreview = ({ slug, title, date, subtitle }: Props) => {
       </h3>
 
       <Link href={`/articles/${slug}`} className="hover:underline">
-        <h2 className="font-bold text-lg">{title}</h2>
+        <h2 className="font-bold text-lg truncate">{title}</h2>
       </Link>
       <h3 className="text-xs line-clamp-2">{subtitle}</h3>
     </div>
