@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Building2, Globe, Heart } from "lucide-react";
 import getPostsMetaData from "@/utils/getArticlesMetaData";
 import PostPreview from "@/components/PostPreview";
+import Image from "next/image";
 
 export default function Home() {
   const postsMetaData = getPostsMetaData();
@@ -24,13 +25,13 @@ export default function Home() {
             </div>
 
             {/* Main Heading */}
-            <div className="space-y-6">
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-gray-900">
-                GCC
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600">
-                  Group
-                </span>
-              </h1>
+            <div className="space-y-6 flex flex-col items-center justify-center">
+              <Image
+                src="/images/gcc-logo.png"
+                alt="logo"
+                width={500}
+                height={500}
+              />
               <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
                 A diversified conglomerate spanning finance, healthcare, real
                 estate, hospitality, and global markets.
@@ -45,7 +46,7 @@ export default function Home() {
                 className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 text-lg font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
               >
                 <Link
-                  href="https://gc-gp.vercel.app"
+                  href="https://gcc-gp.vercel.app"
                   target="_blank"
                   className="inline-flex items-center gap-2"
                 >

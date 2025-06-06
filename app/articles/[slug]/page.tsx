@@ -51,9 +51,9 @@ const Strong = ({ children, ...props }: any) => {
 async function ArticlePage(props: any) {
   const postContent = getPostContent((await props.params).slug);
   return (
-    <div className="lg:px-20 md:px-10 px-5 py-20 flex flex-col items-center justify-center">
-      <div className="lg:grid grid-cols-6 gap-x-10">
-        <div className="col-span-5">
+    <div className="lg:px-20 md:px-10 px-5 py-20 ">
+      <div className="flex items-center justify-center">
+        <div className="max-w-4xl">
           <div>
             <BlogHeader
               date={postContent.data.date}

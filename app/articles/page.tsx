@@ -13,14 +13,14 @@ function ArticlesPage() {
   const postsMetaData = getPostsMetaData();
 
   return (
-    <div className="lg:px-20 md:px-10 px-5 pb-20 pt-20">
+    <div className="lg:px-20 md:px-10 px-5 pb-20 pt-32">
       <div className="flex items-center gap-4">
         <Link href="/">
           <Button size="icon" variant={"ghost"} className="cursor-pointer">
             <ArrowLeft />
           </Button>
         </Link>
-        <h2 className="font-bold text-3xl py-5">All Articles</h2>
+        <h2 className="font-bold text-2xl py-5">All Articles</h2>
       </div>
       <div className="lg:grid grid-cols-3 gap-10 lg:space-y-0 space-y-10">
         {postsMetaData.map((post) => (
