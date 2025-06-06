@@ -105,7 +105,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-8">
+          <div className="md:grid grid-cols-3 gap-8 space-y-8 ">
             {recentArticles.map((post) => (
               <PostPreview key={post.slug} {...post} />
             ))}
