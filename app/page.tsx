@@ -5,6 +5,12 @@ import getPostsMetaData from "@/utils/getArticlesMetaData";
 import PostPreview from "@/components/PostPreview";
 import Image from "next/image";
 
+const recentVideoLinks = [
+  "https://www.youtube.com/embed/DyqtIKB6HnU",
+  "https://www.youtube.com/embed/YYqrWYdbe10",
+  "https://www.youtube.com/embed/6kWMDmHDxXc",
+];
+
 export default function Home() {
   const postsMetaData = getPostsMetaData();
   const recentArticles = postsMetaData.slice(0, 3);
@@ -121,6 +127,36 @@ export default function Home() {
             </Button>
           </div>
         </div>
+        <section className="container mx-auto px-4 py-20">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Recent Videos
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Latest videos from across our business divisions
+              </p>
+            </div>
+
+            <div className="md:grid grid-cols-3 gap-8 space-y-8 ">
+              {recentVideoLinks.map((post, idx) => (
+                <iframe key={idx} width="" height="300px" src={post}></iframe>
+              ))}
+            </div>
+
+            <div className="text-center mt-16">
+              <Button
+                variant="outline"
+                asChild
+                className="border-2 border-gray-200 hover:border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-3 text-lg font-medium rounded-xl transition-all duration-200"
+              >
+                <Link href="https://www.youtube.com/@gcc3090">
+                  View All Videos
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
       </section>
     </div>
   );
