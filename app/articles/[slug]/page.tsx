@@ -62,7 +62,7 @@ async function ArticlePage(props: any) {
             />
           </div>
           <div className="dark:text-inherit">
-            <article className="md:prose-base lg:prose-lg prose-sm prose prose-pink md:max-w-none">
+            <article className="md:prose-xl lg:prose-2xl prose-lg prose prose-pink md:max-w-none">
               <Markdown
                 options={{
                   wrapper: MarkdownWrapper,

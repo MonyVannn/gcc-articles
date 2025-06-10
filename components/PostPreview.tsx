@@ -27,7 +27,7 @@ const PostPreview = ({ slug, title, date, subtitle }: Props) => {
         <Link href={`/articles/${slug}`}>
           <div className="absolute inset-0">
             <Image
-              src={`/thumbnails/${slug}.jpeg`}
+              src={`/thumbnails/${slug}.jpg`}
               className="object-cover w-full h-full rounded-sm z-0"
               alt="thumbnail"
               layout="fill"
