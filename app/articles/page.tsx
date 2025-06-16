@@ -4,6 +4,7 @@ import getPostsMetaData from "@/utils/getArticlesMetaData";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
+import SearchBar from "@/components/SearchInput";
 
 export const metadata: Metadata = {
   title: "Posts",
@@ -48,17 +49,30 @@ async function ArticlesPage({
 }) {
   const params = await searchParams;
   const pageValue = params.page;
+  const searchValue = params.search;
   const page = parseInt(
     Array.isArray(pageValue) ? pageValue[0] : pageValue || "1",
     10
   );
   const allPosts = getPostsMetaData();
+  const search =
+    typeof searchValue === "string"
+      ? searchValue.toLowerCase()
+      : Array.isArray(searchValue)
+      ? searchValue[0]?.toLowerCase() || ""
+      : "";
+  const filteredPosts = search
+    ? allPosts.filter((post) => post.title.toLowerCase().includes(search))
+    : allPosts;
 
   const totalPosts = allPosts.length;
   const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
 
   const startIndex = (page - 1) * POSTS_PER_PAGE;
-  const selectedPosts = allPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
+  const paginatedPosts = filteredPosts.slice(
+    startIndex,
+    startIndex + POSTS_PER_PAGE
+  );
 
   const isInvalidPage = page < 1 || page > totalPages;
 
@@ -70,18 +84,21 @@ async function ArticlesPage({
             <ArrowLeft />
           </Button>
         </Link>
-        <div className="flex items-center justify-between w-full">
-          <h2 className="font-bold text-2xl py-5">All Articles </h2>
-          <span className="font-semibold text-sm">
-            Page {page} ({selectedPosts.length} of {totalPosts} articles)
-          </span>
-        </div>
+        <h2 className="font-bold text-2xl py-5">All Articles </h2>
+      </div>
+      <div className="flex items-center justify-between w-full">
+        <SearchBar />
+        <span className="font-semibold text-sm">
+          Page {page} ({paginatedPosts.length} of {totalPosts} articles)
+        </span>
       </div>
 
       {/* Article List */}
-      <div className="lg:grid grid-cols-3 gap-10 lg:space-y-0 space-y-10">
-        {!isInvalidPage && selectedPosts.length > 0 ? (
-          selectedPosts.map((post) => <PostPreview key={post.slug} {...post} />)
+      <div className="lg:grid grid-cols-3 gap-10 lg:space-y-0 space-y-10 mt-14">
+        {!isInvalidPage && paginatedPosts.length > 0 ? (
+          paginatedPosts.map((post) => (
+            <PostPreview key={post.slug} {...post} />
+          ))
         ) : (
           <p className="text-center col-span-3 text-muted-foreground text-lg">
             No articles found for this page.
